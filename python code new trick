@@ -1,0 +1,43 @@
+import random
+import time
+
+class EcoPositivePackaging:
+    def __init__(self, seed_type, nutrient_level):
+        self.seed_type = seed_type
+        self.nutrient_level = nutrient_level
+        self.broken_down = False
+    
+    def break_down(self):
+        print("Packaging is breaking down...")
+        time.sleep(2)
+        self.broken_down = True
+        print("Packaging has broken down.")
+    
+    def plant_seeds(self):
+        if self.broken_down:
+            print(f"Planting {self.seed_type} seeds into the soil...")
+            success = random.choice([True, False])
+            if success:
+                print(f"{self.seed_type} seeds have successfully germinated!")
+            else:
+                print(f"Unfortunately, the {self.seed_type} seeds did not germinate.")
+        else:
+            print("Packaging has not broken down yet.")
+    
+    def enrich_soil(self):
+        if self.broken_down:
+            print(f"Releasing nutrients into the soil...")
+            soil_quality = random.choice(['Poor', 'Moderate', 'Good', 'Excellent'])
+            if soil_quality in ['Good', 'Excellent']:
+                print(f"Success! The soil quality has improved to {soil_quality} due to nutrient release.")
+            else:
+                print(f"The soil quality is {soil_quality}. More nutrients may be needed.")
+        else:
+            print("Packaging has not broken down yet.")
+
+# Example usage
+packaging = EcoPositivePackaging(seed_type="Wildflower", nutrient_level=5)
+
+packaging.break_down()
+packaging.plant_seeds()
+packaging.enrich_soil()
